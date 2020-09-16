@@ -32,7 +32,7 @@ namespace GUI
         {
             this.components = new System.ComponentModel.Container();
             this.btn_newLion = new System.Windows.Forms.Button();
-            this.btn_showAnimals = new System.Windows.Forms.Button();
+            this.btn_resetGame = new System.Windows.Forms.Button();
             this.Lbox_animals = new System.Windows.Forms.ListBox();
             this.bnt_StartGame = new System.Windows.Forms.Button();
             this.PicBox_savannah = new System.Windows.Forms.PictureBox();
@@ -40,6 +40,8 @@ namespace GUI
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.btn_stop = new System.Windows.Forms.Button();
             this.btn_newRabbit = new System.Windows.Forms.Button();
+            this.txt_speedMs = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_savannah)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,16 +56,16 @@ namespace GUI
             this.btn_newLion.UseVisualStyleBackColor = true;
             this.btn_newLion.Click += new System.EventHandler(this.btn_newLion_Click);
             // 
-            // btn_showAnimals
+            // btn_resetGame
             // 
-            this.btn_showAnimals.Location = new System.Drawing.Point(36, 125);
-            this.btn_showAnimals.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_showAnimals.Name = "btn_showAnimals";
-            this.btn_showAnimals.Size = new System.Drawing.Size(75, 37);
-            this.btn_showAnimals.TabIndex = 1;
-            this.btn_showAnimals.Text = "Show All";
-            this.btn_showAnimals.UseVisualStyleBackColor = true;
-            this.btn_showAnimals.Click += new System.EventHandler(this.btn_showAnimals_Click);
+            this.btn_resetGame.Location = new System.Drawing.Point(36, 225);
+            this.btn_resetGame.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_resetGame.Name = "btn_resetGame";
+            this.btn_resetGame.Size = new System.Drawing.Size(75, 37);
+            this.btn_resetGame.TabIndex = 1;
+            this.btn_resetGame.Text = "Reset";
+            this.btn_resetGame.UseVisualStyleBackColor = true;
+            this.btn_resetGame.Click += new System.EventHandler(this.btn_resetGame_Click);
             // 
             // Lbox_animals
             // 
@@ -76,7 +78,7 @@ namespace GUI
             // 
             // bnt_StartGame
             // 
-            this.bnt_StartGame.Location = new System.Drawing.Point(36, 175);
+            this.bnt_StartGame.Location = new System.Drawing.Point(36, 125);
             this.bnt_StartGame.Margin = new System.Windows.Forms.Padding(2);
             this.bnt_StartGame.Name = "bnt_StartGame";
             this.bnt_StartGame.Size = new System.Drawing.Size(75, 37);
@@ -90,7 +92,7 @@ namespace GUI
             this.PicBox_savannah.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.PicBox_savannah.Location = new System.Drawing.Point(468, 25);
             this.PicBox_savannah.Name = "PicBox_savannah";
-            this.PicBox_savannah.Size = new System.Drawing.Size(Settings.areaSize, Settings.areaSize);
+            this.PicBox_savannah.Size = new System.Drawing.Size(400, 400);
             this.PicBox_savannah.TabIndex = 5;
             this.PicBox_savannah.TabStop = false;
             this.PicBox_savannah.Paint += new System.Windows.Forms.PaintEventHandler(this.PicBox_savannah_Paint);
@@ -105,7 +107,7 @@ namespace GUI
             // 
             // btn_stop
             // 
-            this.btn_stop.Location = new System.Drawing.Point(36, 225);
+            this.btn_stop.Location = new System.Drawing.Point(36, 175);
             this.btn_stop.Name = "btn_stop";
             this.btn_stop.Size = new System.Drawing.Size(75, 37);
             this.btn_stop.TabIndex = 7;
@@ -123,31 +125,50 @@ namespace GUI
             this.btn_newRabbit.UseVisualStyleBackColor = true;
             this.btn_newRabbit.Click += new System.EventHandler(this.btn_newRabbit_Click);
             // 
+            // txt_speedMs
+            // 
+            this.txt_speedMs.Location = new System.Drawing.Point(468, 474);
+            this.txt_speedMs.Name = "txt_speedMs";
+            this.txt_speedMs.Size = new System.Drawing.Size(100, 20);
+            this.txt_speedMs.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(468, 455);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Drawing speed in ms";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1205, 753);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_speedMs);
             this.Controls.Add(this.btn_newRabbit);
             this.Controls.Add(this.btn_stop);
             this.Controls.Add(this.listBox_Incidents);
             this.Controls.Add(this.PicBox_savannah);
             this.Controls.Add(this.bnt_StartGame);
             this.Controls.Add(this.Lbox_animals);
-            this.Controls.Add(this.btn_showAnimals);
+            this.Controls.Add(this.btn_resetGame);
             this.Controls.Add(this.btn_newLion);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_savannah)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btn_newLion;
-        private System.Windows.Forms.Button btn_showAnimals;
+        private System.Windows.Forms.Button btn_resetGame;
         private System.Windows.Forms.ListBox Lbox_animals;
         private System.Windows.Forms.Button bnt_StartGame;
         private System.Windows.Forms.PictureBox PicBox_savannah;
@@ -155,6 +176,8 @@ namespace GUI
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Button btn_stop;
         private System.Windows.Forms.Button btn_newRabbit;
+        private System.Windows.Forms.TextBox txt_speedMs;
+        private System.Windows.Forms.Label label1;
     }
 }
 

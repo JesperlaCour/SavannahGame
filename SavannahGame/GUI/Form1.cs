@@ -10,33 +10,39 @@ using System.Windows.Forms;
 using BusinessLogic;
 using Entity;
 using SetupFile;
+using System.Diagnostics;
 
 namespace GUI
 {
     public partial class Form1 : Form
     {
+        Stopwatch stopWatch = new Stopwatch();
+        long time;
        
         public Form1()
         {
-            savannah = new Savannah();
+            savannah = new SavannahGame(); //adgang til controller/facade
+
             InitializeComponent();
         }
-        Savannah savannah;
+        SavannahGame savannah;
 
         private void btn_newLion_Click(object sender, EventArgs e)
         {
             savannah.NewLion();
+            UpdateLBOX_Animals();
         }
 
         private void btn_newRabbit_Click(object sender, EventArgs e)
         {
             savannah.NewRabbit();
+            UpdateLBOX_Animals();
         }
 
-        private void btn_showAnimals_Click(object sender, EventArgs e)
+        private void btn_resetGame_Click(object sender, EventArgs e)
         {
-            Lbox_animals.DataSource = null;
-            Lbox_animals.DataSource = savannah.animalList;
+            savannah = new SavannahGame();
+            
         }
 
         private void bnt_StartGame_Click(object sender, EventArgs e)
@@ -49,6 +55,7 @@ namespace GUI
 
         private void UpdateScreen(object sender, EventArgs e)
         {
+            stopWatch.Restart();
             //moves animals
             savannah.MoveAnimals();
 
@@ -59,8 +66,7 @@ namespace GUI
             savannah.GrassGrows();
 
             //updates list of animals alive
-            Lbox_animals.DataSource = null;
-            Lbox_animals.DataSource = savannah.animalList;
+            UpdateLBOX_Animals();
 
             //updates list of incidents
             listBox_Incidents.DataSource = null;
@@ -69,12 +75,23 @@ namespace GUI
 
             //update graphic
             PicBox_savannah.Invalidate();
+
+            stopWatch.Stop();
+            time = stopWatch.ElapsedMilliseconds;
+
+            txt_speedMs.Text = time.ToString();
+        }
+
+        public void UpdateLBOX_Animals()
+        {
+            Lbox_animals.DataSource = null;
+            Lbox_animals.DataSource = savannah.animalList;
         }
 
         private void PicBox_savannah_Paint(object sender, PaintEventArgs e)
         {
             Graphics canvas = e.Graphics;
-
+            
             
             for (int i = 0; i < savannah.areaArray.GetLength(0); i++)
             {
@@ -100,11 +117,16 @@ namespace GUI
                 else
                     canvas.FillEllipse(Brushes.White, new Rectangle(item.locationX * 20, item.locationY * 20, 15, 15));
             }
+            
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
         {
             gameTimer.Stop();
         }
+
+
+
+        
     }
 }

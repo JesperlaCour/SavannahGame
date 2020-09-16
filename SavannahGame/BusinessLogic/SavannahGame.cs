@@ -11,7 +11,7 @@ using SetupFile;
 
 namespace BusinessLogic
 {
-    public class Savannah
+    public class SavannahGame
     {
         public Area[,] areaArray { get; private set; } = new Area[Settings.NumbersOfAreas, Settings.NumbersOfAreas];
         public List<Animal> animalList { get; private set; } = new List<Animal>();
@@ -19,7 +19,7 @@ namespace BusinessLogic
 
        
 
-        public Savannah() //assign areas to the savannah
+        public SavannahGame() //assign areas to the savannah
         {
             Random r = new Random();
             //int count = 1;
@@ -51,12 +51,17 @@ namespace BusinessLogic
 
         public void MoveAnimals()
         {
+            //for (int i = 0; i < 2000000000; i++)
+            //{
+            //    i++;
+            //}
             //move animals to new location
             foreach (var animal in animalList)
             {
                 animal.Move();
                 AnimalEatsGrass(animal);
                 animal.CheckWeight();
+
             }
             //check if animals is alive. If not it's removed from list
             for (int i = animalList.Count - 1; i >= 0; i--)
@@ -186,6 +191,7 @@ namespace BusinessLogic
                 }
             }
         }
+
     }
 }
 
