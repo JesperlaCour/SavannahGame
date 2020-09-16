@@ -10,6 +10,11 @@ namespace Entity
     {
         void Move();
         void Die();
-        void Eat();
+        void Eat(int x);
+        void CheckWeight();
+        void ChangeWeight(int y);
+
+
+       
     }
 }

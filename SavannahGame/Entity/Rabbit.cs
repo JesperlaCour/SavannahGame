@@ -19,10 +19,10 @@ namespace Entity
                 Die();
         }
 
-        public override void Die()
-        {
-            alive = false;
-        }
+        //public override void Die()
+        //{
+        //    alive = false;
+        //}
 
         public override void ChangeWeight(int change)
         {
@@ -31,9 +31,9 @@ namespace Entity
                 weight = Settings.rabbitMaxWeight ;
         }
 
-        public override void Eat()
-        {
-            throw new NotImplementedException();
-        }
+        //public override void Eat(int change)
+        //{
+        //    ChangeWeight(6);
+        //}
     }
 }

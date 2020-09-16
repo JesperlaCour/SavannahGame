@@ -21,7 +21,7 @@ namespace Entity
     {
         public animalType type { get; private set; }
         public int weight { get; protected set; }
-        int range; //distance animal can move
+        public int range { get; protected set; } //distance animal can move
         public int weightGain { get; private set; } //weight animal gain when eating grass
         public bool alive { get; protected set; }
         public gender gender { get; private set; }
@@ -49,9 +49,15 @@ namespace Entity
                 gender = gender.female;
         }
 
-        public abstract void Die();
+        public virtual void Die()
+        {
+            alive = false;
+        }
 
-        public abstract void Eat();
+        public virtual void Eat(int weightChange)
+        {
+            ChangeWeight(weightChange);
+        }
 
         public virtual void ChangeWeight(int change)
         {
@@ -91,6 +97,6 @@ namespace Entity
             return $"{type} {gender} {weight}kg at ({locationX},{locationY})";
         }
 
-
+        
     }
 }
