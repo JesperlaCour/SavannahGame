@@ -12,7 +12,7 @@ namespace BusinessLogic
     {
         //private int num;
         private bool grass;
-        public Animal animal { get; set; }
+        //public Animal animal { get; set; }
 
         //Random r = new Random();
 

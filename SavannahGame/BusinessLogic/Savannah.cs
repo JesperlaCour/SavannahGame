@@ -135,7 +135,7 @@ namespace BusinessLogic
         {
             if (areaArray[animal.locationX, animal.locationY].ContainsGrass() == true)
             {
-                animal.ChangeWeight(animal.weightGain);
+                animal.Eat(animal.weightGain);
                 areaArray[animal.locationX, animal.locationY].GrassEaten();
             }
             else
