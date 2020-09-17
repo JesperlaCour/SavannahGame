@@ -1,4 +1,4 @@
-﻿using Entity;
+﻿using Common;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SetupFile;
+using Common.SetupFile;
 
 namespace BusinessLogic
 {
     public class SavannahGame
     {
-        public Area[,] areaArray { get; private set; } = new Area[Settings.NumbersOfAreas, Settings.NumbersOfAreas];
+        public Area[,] areaArray { get; private set; } = new Area[Settings.Instance().NumbersOfAreas, Settings.Instance().NumbersOfAreas];
         public List<Animal> animalList { get; private set; } = new List<Animal>();
         public List<string> IncidentsList { get; private set; } = new List<string>();
 
@@ -39,13 +39,13 @@ namespace BusinessLogic
         public void NewLion()
         {
             Random r = new Random();
-            animalList.Add(new Lion(r.Next(Settings.lionMinWeight + 7, Settings.lionMaxBornWeight), Settings.lionRange,animalType.lion,Settings.lionWeightGain));
+            animalList.Add(new Lion(r.Next(Settings.Instance().lionMinWeight + 7, Settings.Instance().lionMaxBornWeight), Settings.Instance().lionRange,animalType.lion, Settings.Instance().lionWeightGain));
         }
 
         public void NewRabbit()
         {
             Random r = new Random();
-            animalList.Add(new Rabbit(r.Next(Settings.rabbitMinWeight + 2, Settings.rabbitMaxBornWeight), Settings.rabbitRange, animalType.rabbit,Settings.rabbitWeightGain));
+            animalList.Add(new Rabbit(r.Next(Settings.Instance().rabbitMinWeight + 2, Settings.Instance().rabbitMaxBornWeight), Settings.Instance().rabbitRange, animalType.rabbit, Settings.Instance().rabbitWeightGain));
         }
 
 
@@ -190,7 +190,7 @@ namespace BusinessLogic
                     if (!areaArray[i,j].ContainsGrass())
                     {
                         
-                        if (r.Next(0, 100/Settings.grassGrowSpeed) == 0)
+                        if (r.Next(0, 100/ Settings.Instance().grassGrowSpeed) == 0)
                         {
                             areaArray[i, j].GrassGrows();
                             count++;

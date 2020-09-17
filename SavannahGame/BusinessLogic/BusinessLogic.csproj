@@ -48,13 +48,9 @@
     <Compile Include="SavannahGame.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entity\Entity.csproj">
+    <ProjectReference Include="..\Entity\Common.csproj">
       <Project>{a6fb5431-e08a-4ed3-bdf9-2af0736fbfb6}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SetupFile\SetupFile.csproj">
-      <Project>{8d34b642-2c5a-4f6f-99ac-5def0c15d793}</Project>
-      <Name>SetupFile</Name>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

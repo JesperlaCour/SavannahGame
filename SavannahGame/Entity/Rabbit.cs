@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SetupFile;
+using Common.SetupFile;
 
-namespace Entity
+namespace Common
 {
     public class Rabbit : Animal
     {
@@ -15,7 +15,7 @@ namespace Entity
         }
         public override void CheckWeight()
         {
-            if (weight < Settings.rabbitMinWeight)
+            if (weight < Settings.Instance().rabbitMinWeight)
                 Die();
         }
 
@@ -27,8 +27,8 @@ namespace Entity
         public override void ChangeWeight(int change)
         {
             weight = weight + change;
-            if (weight > Settings.rabbitMaxWeight)
-                weight = Settings.rabbitMaxWeight ;
+            if (weight > Settings.Instance().rabbitMaxWeight)
+                weight = Settings.Instance().rabbitMaxWeight ;
         }
 
         //public override void Eat(int change)
