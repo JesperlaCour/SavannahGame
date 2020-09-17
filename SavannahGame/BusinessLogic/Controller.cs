@@ -39,6 +39,13 @@ namespace BusinessLogic
             savannah.NewRabbit();
         }
 
+        public void AnimalIteration()
+        {
+            savannah.MoveAnimals();
+            savannah.AnimalsCheck_SameLocation();
+            savannah.GrassGrows();
+        }
+
         public void MoveAnimals()
         {
             savannah.MoveAnimals();
