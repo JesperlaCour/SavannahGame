@@ -75,7 +75,7 @@ namespace BusinessLogic
             }
         }
 
-        public void AnimalsSameLocation()
+        public void AnimalsCheck_SameLocation()
         {
             for (int i = 0; i < animalList.Count; i++)
             {
@@ -90,28 +90,30 @@ namespace BusinessLogic
                             animalList[i].gender != animalList[j].gender)
                         {
                             AnimalsMate(animalList[i].type);
-                            continue;
+                            //continue;
                         }
                         //Lion always eats rabbits
-                        if (animalList[i].type != animalList[j].type)
+                        else if (animalList[i].type != animalList[j].type)
                         {
                             if (animalList[i].type == animalType.lion)
                             {
                                 IncidentsList.Insert(0, $"A {animalList[i].type} eats a {animalList[j].type} and gain {animalList[j].weight/2}kg");
                                 animalList[i].ChangeWeight(animalList[j].weight / 2);
                                 animalList.RemoveAt(j);
-                                continue;
+                                j--;  //items are renumbered and has to be checked again. example [3] is removed [4] becomes [3] etc. 
+                                //continue;
                             }
                             else
                             {
                                 IncidentsList.Insert(0, $"A {animalList[j].type} eats a {animalList[i].type} and gain {animalList[i].weight / 2}kg");
                                 animalList[j].ChangeWeight(animalList[i].weight / 2);
                                 animalList.RemoveAt(i);
-                                continue;
+                                i--;
+                                break; //breaks for loop[j] and checks the new [i] again
                             } 
                         }
                         //male lions fight
-                        if (animalList[i].type == animalType.lion &&
+                        else if (animalList[i].type == animalType.lion &&
                             animalList[i].type == animalList[j].type &&
                             animalList[i].gender == gender.male &&
                             animalList[i].gender == animalList[j].gender)
@@ -120,21 +122,27 @@ namespace BusinessLogic
                             {
                                 IncidentsList.Insert(0, $"Lion dies because it only weighs {animalList[j].weight}kg ({animalList[i].gender}) in the fight against one at {animalList[i].weight}kg ({animalList[j].gender})\tThe fight happened at the position {animalList[i].locationX},{animalList[i].locationY}");
                                 animalList.RemoveAt(j);
-                                continue;
+                                j--; 
+                                
                             }
                             else
                             {
                                 IncidentsList.Insert(0, $"Lion dies because it only weighs {animalList[i].weight}kg ({animalList[i].gender}) in the fight against one at {animalList[j].weight}kg ({animalList[j].gender})\tThe fight happened at the position {animalList[i].locationX},{animalList[i].locationY}");
                                 animalList.RemoveAt(i);
-                                continue;
+                                i++;
+                                break; //breaks for loop[j] and checks the new [i] again
                             }
                         }
+
+                         
                         
                         
                     }
                 }
             }
         }
+
+        
 
         private void AnimalEatsGrass(Animal animal)
         {

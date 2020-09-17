@@ -137,9 +137,9 @@ namespace GUI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(468, 455);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Drawing speed in ms";
+            this.label1.Text = "Iteration speed in ms";
             // 
             // Form1
             // 
