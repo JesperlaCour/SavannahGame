@@ -90,7 +90,7 @@ namespace BusinessLogic
                             animalList[i].gender != animalList[j].gender)
                         {
                             AnimalsMate(animalList[i].type);
-                            //continue;
+                            continue;
                         }
                         //Lion always eats rabbits
                         else if (animalList[i].type != animalList[j].type)
@@ -101,7 +101,7 @@ namespace BusinessLogic
                                 animalList[i].ChangeWeight(animalList[j].weight / 2);
                                 animalList.RemoveAt(j);
                                 j--;  //items are renumbered and has to be checked again. example [3] is removed [4] becomes [3] etc. 
-                                //continue;
+                                continue;
                             }
                             else
                             {
@@ -122,7 +122,8 @@ namespace BusinessLogic
                             {
                                 IncidentsList.Insert(0, $"Lion dies because it only weighs {animalList[j].weight}kg ({animalList[i].gender}) in the fight against one at {animalList[i].weight}kg ({animalList[j].gender})\tThe fight happened at the position {animalList[i].locationX},{animalList[i].locationY}");
                                 animalList.RemoveAt(j);
-                                j--; 
+                                j--;
+                                continue;
                                 
                             }
                             else

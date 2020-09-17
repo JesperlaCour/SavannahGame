@@ -11,6 +11,7 @@ using BusinessLogic;
 using Common;
 using Common.SetupFile;
 using System.Diagnostics;
+using System.Threading;
 
 namespace GUI
 {
@@ -53,36 +54,57 @@ namespace GUI
         private void UpdateScreen(object sender, EventArgs e)
         {
             stopWatch.Restart();
-            //moves animals
-            Controller.Instance().MoveAnimals();
 
-            //check for animals in same area and conflicts between animals
-            Controller.Instance().AnimalsSameLocation();
+            Task task1 = Task.Factory.StartNew(() => Controller.Instance().AnimalIteration());
 
-            //check if area has grass. If not, it has a change for growing (33%)
-            Controller.Instance().GrassGrows();
+
+            //Task task2 = Task.Factory.StartNew(() => Controller.Instance().AnimalIteration());
+            //Task task3 = Task.Factory.StartNew(() => Controller.Instance().AnimalIteration());
+
 
             //updates list of animals alive
             UpdateLBOX_Animals();
 
-            //updates list of incidents
-            listBox_Incidents.DataSource = null;
-            listBox_Incidents.DataSource = Controller.Instance().GetIncidentList();
 
+            //updates list of incidents
+            UpdateLBOX_Incidents();
+
+            Task.WaitAll(task1);
 
             //update graphic
-            PicBox_savannah.Invalidate();
 
+            PicBox_savannah.Invalidate();
+            
             stopWatch.Stop();
             time = stopWatch.ElapsedMilliseconds;
 
             txt_speedMs.Text = time.ToString();
         }
+        //private void AnimalIteration()
+        //{
+        //    //moves animals
+        //    Controller.Instance().MoveAnimals();
 
-        public void UpdateLBOX_Animals()
+        //    //check for animals in same area and conflicts between animals
+        //    Controller.Instance().AnimalsSameLocation();
+
+        //    //check if area has grass. If not, it has a change for growing (33%)
+        //    Controller.Instance().GrassGrows();
+        //}
+
+
+        private void UpdateLBOX_Animals()
         {
-            Lbox_animals.DataSource = null;
-            Lbox_animals.DataSource = Controller.Instance().GetAnimalList();
+             Lbox_animals.DataSource = null;
+             Lbox_animals.DataSource = Controller.Instance().GetAnimalList();
+          
+            
+        }
+
+        private void UpdateLBOX_Incidents()
+        {
+            listBox_Incidents.DataSource = null;
+            listBox_Incidents.DataSource = Controller.Instance().GetIncidentList();
         }
 
         private void PicBox_savannah_Paint(object sender, PaintEventArgs e) //paints PicBox_savannah. Graphics only related to forms. 
