@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
-using Entity;
-using SetupFile;
+using Common;
+using Common.SetupFile;
 using System.Diagnostics;
 
 namespace GUI
@@ -45,7 +45,7 @@ namespace GUI
         private void bnt_StartGame_Click(object sender, EventArgs e)
         {
 
-            gameTimer.Interval = 1000 / Settings.speed;
+            gameTimer.Interval = 1000 / Settings.Instance().speed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
         }

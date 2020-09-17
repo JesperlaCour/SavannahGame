@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SetupFile;
+using Common.SetupFile;
 
-namespace Entity
+namespace Common
 {
     public enum gender
     {
@@ -38,8 +38,8 @@ namespace Entity
             this.weightGain = weightGain;
             this.type = type;
             alive = true;
-            locationX = random.Next(0, Settings.NumbersOfAreas);
-            locationY = random.Next(0, Settings.NumbersOfAreas);
+            locationX = random.Next(0, Settings.Instance().NumbersOfAreas);
+            locationY = random.Next(0, Settings.Instance().NumbersOfAreas);
 
             if (random.Next(1, 3) == 1)
             {
@@ -71,7 +71,7 @@ namespace Entity
             {
                
                 int temp = random.Next(locationX - range, locationX + range + 1);
-                if (temp >= 0 && temp < Settings.NumbersOfAreas)
+                if (temp >= 0 && temp < Settings.Instance().NumbersOfAreas)
                 {
                     locationX = temp;
                     break;
@@ -80,7 +80,7 @@ namespace Entity
             while (true)
             {
                 int temp = random.Next(locationY - range, locationY + range +1);
-                if (temp >= 0 && temp < Settings.NumbersOfAreas)
+                if (temp >= 0 && temp < Settings.Instance().NumbersOfAreas)
                 {
                     locationY = temp;
                     break;

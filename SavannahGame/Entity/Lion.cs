@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SetupFile;
+using Common.SetupFile;
 
 
-namespace Entity
+namespace Common
 {
     public class Lion : Animal
     {
@@ -45,7 +45,7 @@ namespace Entity
 
         public override void CheckWeight()
         {
-            if (weight < Settings.lionMinWeight)
+            if (weight < Settings.Instance().lionMinWeight)
                 Die();
         }
 
@@ -57,8 +57,8 @@ namespace Entity
         public override void ChangeWeight(int change)
         {
             weight = weight + change;
-            if (weight > Settings.LionMaxWeight)
-                weight = Settings.LionMaxWeight;
+            if (weight > Settings.Instance().LionMaxWeight)
+                weight = Settings.Instance().LionMaxWeight;
         }
 
 
