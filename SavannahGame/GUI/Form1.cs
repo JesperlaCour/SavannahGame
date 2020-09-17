@@ -21,28 +21,25 @@ namespace GUI
        
         public Form1()
         {
-            savannah = new SavannahGame(); //adgang til controller/facade
-
+            
             InitializeComponent();
         }
-        SavannahGame savannah;
 
         private void btn_newLion_Click(object sender, EventArgs e)
         {
-            savannah.NewLion();
+            Controller.Instance().NewLion();
             UpdateLBOX_Animals();
         }
 
         private void btn_newRabbit_Click(object sender, EventArgs e)
         {
-            savannah.NewRabbit();
+            Controller.Instance().NewRabbit();
             UpdateLBOX_Animals();
         }
 
         private void btn_resetGame_Click(object sender, EventArgs e)
         {
-            savannah = new SavannahGame();
-            
+            Controller.Instance().ResetGame();
         }
 
         private void bnt_StartGame_Click(object sender, EventArgs e)
@@ -57,20 +54,20 @@ namespace GUI
         {
             stopWatch.Restart();
             //moves animals
-            savannah.MoveAnimals();
+            Controller.Instance().MoveAnimals();
 
             //check for animals in same area and conflicts between animals
-            savannah.AnimalsSameLocation();
+            Controller.Instance().AnimalsSameLocation();
 
             //check if area has grass. If not, it has a change for growing (33%)
-            savannah.GrassGrows();
+            Controller.Instance().GrassGrows();
 
             //updates list of animals alive
             UpdateLBOX_Animals();
 
             //updates list of incidents
             listBox_Incidents.DataSource = null;
-            listBox_Incidents.DataSource = savannah.IncidentsList;
+            listBox_Incidents.DataSource = Controller.Instance().GetIncidentList();
 
 
             //update graphic
@@ -85,27 +82,26 @@ namespace GUI
         public void UpdateLBOX_Animals()
         {
             Lbox_animals.DataSource = null;
-            Lbox_animals.DataSource = savannah.animalList;
+            Lbox_animals.DataSource = Controller.Instance().GetAnimalList();
         }
 
-        private void PicBox_savannah_Paint(object sender, PaintEventArgs e)
+        private void PicBox_savannah_Paint(object sender, PaintEventArgs e) //paints PicBox_savannah. Graphics only related to forms. 
         {
             Graphics canvas = e.Graphics;
             
             
-            for (int i = 0; i < savannah.areaArray.GetLength(0); i++)
+            for (int i = 0; i < Controller.Instance().GetAreaArray().GetLength(0); i++)
             {
-                for (int j = 0; j < savannah.areaArray.GetLength(1); j++)
+                for (int j = 0; j < Controller.Instance().GetAreaArray().GetLength(1); j++)
                 {
-                    if (savannah.areaArray[i, j].ContainsGrass() == true)
+                    if (Controller.Instance().GetAreaArray()[i, j].ContainsGrass() == true)
                     {
                         canvas.FillEllipse(Brushes.Green, new Rectangle(i * 20, j * 20, 20, 20));
                     }
-
                 }
 
             }
-            foreach (var item in savannah.animalList)
+            foreach (var item in Controller.Instance().GetAnimalList())
             {
                 if (item.type == animalType.lion)
                 {
