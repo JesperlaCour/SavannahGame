@@ -7,20 +7,20 @@ using Common;
 
 namespace BusinessLogic
 {
-    public sealed class Controller
+    public sealed class Game_Controller
     {
-        private static Controller _instance;
+        private static Game_Controller _instance;
         private SavannahGame savannah = new SavannahGame();
 
-        private Controller()
+        private Game_Controller()
         {
         }
 
-        public static Controller Instance()
+        public static Game_Controller Instance()
         {
             if (_instance == null)
             {
-                _instance = new Controller();
+                _instance = new Game_Controller();
             }
             return _instance;
         }
