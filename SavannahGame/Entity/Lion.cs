@@ -11,10 +11,8 @@ namespace Common
     public class Lion : Animal
     {
         
-        public Lion(int weight, int range,animalType type,int weightGain) : base(weight, range,type,weightGain)
+        public Lion(int weight, int range,int weightGain) : base(weight, range,animalType.lion,weightGain)
         {
-            
-
         }
 
         //public static void MaleLionsFight(ref List<Animal> animalList, ref List<string> incidentList)

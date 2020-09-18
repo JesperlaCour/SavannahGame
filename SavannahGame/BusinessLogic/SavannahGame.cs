@@ -33,21 +33,19 @@ namespace BusinessLogic
             }
             IncidentsList.Add("it was a sunny day on the savannah");
         }
-        
 
-        
+
+
         public void NewLion()
         {
-            Random r = new Random();
-            animalList.Add(new Lion(r.Next(Settings.Instance().lionMinWeight + 7, Settings.Instance().lionMaxBornWeight), Settings.Instance().lionRange,animalType.lion, Settings.Instance().lionWeightGain));
+            animalList.Add(AnimalFactory.Instance().CreateAnimal(animalType.lion));
         }
 
         public void NewRabbit()
         {
-            Random r = new Random();
-            animalList.Add(new Rabbit(r.Next(Settings.Instance().rabbitMinWeight + 2, Settings.Instance().rabbitMaxBornWeight), Settings.Instance().rabbitRange, animalType.rabbit, Settings.Instance().rabbitWeightGain));
-        }
 
+            animalList.Add(AnimalFactory.Instance().CreateAnimal(animalType.rabbit));
+        }
 
         public void MoveAnimals()
         {

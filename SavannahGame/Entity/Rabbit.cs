@@ -9,7 +9,7 @@ namespace Common
 {
     public class Rabbit : Animal
     {
-        public Rabbit(int weight, int range, animalType type, int weightGain) : base(weight, range, type, weightGain)
+        public Rabbit(int weight, int range, int weightGain) : base(weight, range, animalType.rabbit, weightGain)
         {
 
         }
