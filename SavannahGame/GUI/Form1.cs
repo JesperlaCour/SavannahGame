@@ -28,19 +28,19 @@ namespace GUI
 
         private void btn_newLion_Click(object sender, EventArgs e)
         {
-            Controller.Instance().NewLion();
+            Game_Controller.Instance().NewLion();
             UpdateLBOX_Animals();
         }
 
         private void btn_newRabbit_Click(object sender, EventArgs e)
         {
-            Controller.Instance().NewRabbit();
+            Game_Controller.Instance().NewRabbit();
             UpdateLBOX_Animals();
         }
 
         private void btn_resetGame_Click(object sender, EventArgs e)
         {
-            Controller.Instance().ResetGame();
+            Game_Controller.Instance().ResetGame();
         }
 
         private void bnt_StartGame_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace GUI
         {
             stopWatch.Restart();
 
-            Task task1 = Task.Factory.StartNew(() => Controller.Instance().AnimalIteration());
+            Task task1 = Task.Factory.StartNew(() => Game_Controller.Instance().AnimalIteration());
 
 
             //Task task2 = Task.Factory.StartNew(() => Controller.Instance().AnimalIteration());
@@ -96,7 +96,7 @@ namespace GUI
         private void UpdateLBOX_Animals()
         {
              Lbox_animals.DataSource = null;
-             Lbox_animals.DataSource = Controller.Instance().GetAnimalList();
+             Lbox_animals.DataSource = Game_Controller.Instance().GetAnimalList();
           
             
         }
@@ -104,7 +104,7 @@ namespace GUI
         private void UpdateLBOX_Incidents()
         {
             listBox_Incidents.DataSource = null;
-            listBox_Incidents.DataSource = Controller.Instance().GetIncidentList();
+            listBox_Incidents.DataSource = Game_Controller.Instance().GetIncidentList();
         }
 
         private void PicBox_savannah_Paint(object sender, PaintEventArgs e) //paints PicBox_savannah. Graphics only related to forms. 
@@ -112,18 +112,18 @@ namespace GUI
             Graphics canvas = e.Graphics;
             
             
-            for (int i = 0; i < Controller.Instance().GetAreaArray().GetLength(0); i++)
+            for (int i = 0; i < Game_Controller.Instance().GetAreaArray().GetLength(0); i++)
             {
-                for (int j = 0; j < Controller.Instance().GetAreaArray().GetLength(1); j++)
+                for (int j = 0; j < Game_Controller.Instance().GetAreaArray().GetLength(1); j++)
                 {
-                    if (Controller.Instance().GetAreaArray()[i, j].ContainsGrass() == true)
+                    if (Game_Controller.Instance().GetAreaArray()[i, j].ContainsGrass() == true)
                     {
                         canvas.FillEllipse(Brushes.Green, new Rectangle(i * 20, j * 20, 20, 20));
                     }
                 }
 
             }
-            foreach (var item in Controller.Instance().GetAnimalList())
+            foreach (var item in Game_Controller.Instance().GetAnimalList())
             {
                 if (item.type == animalType.lion)
                 {
