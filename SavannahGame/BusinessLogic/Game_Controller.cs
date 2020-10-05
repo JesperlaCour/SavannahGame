@@ -76,6 +76,11 @@ namespace BusinessLogic
             return savannah.areaArray;
         }
 
+        public void SaveGameHistory(string filePath)
+        {
+            savannah.SaveGameHistory(filePath);
+        }
+
 
 
 

@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Entity\Common.csproj", "{A6FB5431-E08A-4ED3-BDF9-2AF0736FBFB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetupFile", "SetupFile\SetupFile.csproj", "{8D34B642-2C5A-4F6F-99AC-5DEF0C15D793}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{F90563CA-7F24-4729-B1A6-740628EF3AB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +28,10 @@ Global
 		{A6FB5431-E08A-4ED3-BDF9-2AF0736FBFB6}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{A6FB5431-E08A-4ED3-BDF9-2AF0736FBFB6}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{A6FB5431-E08A-4ED3-BDF9-2AF0736FBFB6}.Release|anycpu.Build.0 = Release|Any CPU
-		{8D34B642-2C5A-4F6F-99AC-5DEF0C15D793}.Debug|anycpu.ActiveCfg = Debug|Any CPU
-		{8D34B642-2C5A-4F6F-99AC-5DEF0C15D793}.Debug|anycpu.Build.0 = Debug|Any CPU
-		{8D34B642-2C5A-4F6F-99AC-5DEF0C15D793}.Release|anycpu.ActiveCfg = Release|Any CPU
-		{8D34B642-2C5A-4F6F-99AC-5DEF0C15D793}.Release|anycpu.Build.0 = Release|Any CPU
+		{F90563CA-7F24-4729-B1A6-740628EF3AB7}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{F90563CA-7F24-4729-B1A6-740628EF3AB7}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{F90563CA-7F24-4729-B1A6-740628EF3AB7}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{F90563CA-7F24-4729-B1A6-740628EF3AB7}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

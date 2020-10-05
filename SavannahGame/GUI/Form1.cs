@@ -13,6 +13,7 @@ using Common.SetupFile;
 using System.Diagnostics;
 using System.Threading;
 
+
 namespace GUI
 {
     public partial class Form1 : Form
@@ -46,7 +47,7 @@ namespace GUI
         private void bnt_StartGame_Click(object sender, EventArgs e)
         {
 
-            gameTimer.Interval = 1000 / Settings.Instance().speed;
+            gameTimer.Interval = 1000 / Settings.Instance().GameSpeed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
         }
@@ -55,11 +56,7 @@ namespace GUI
         {
             stopWatch.Restart();
 
-            Task task1 = Task.Factory.StartNew(() => Game_Controller.Instance().AnimalIteration());
-
-
-            //Task task2 = Task.Factory.StartNew(() => Controller.Instance().AnimalIteration());
-            //Task task3 = Task.Factory.StartNew(() => Controller.Instance().AnimalIteration());
+            Game_Controller.Instance().AnimalIteration();
 
 
             //updates list of animals alive
@@ -69,7 +66,7 @@ namespace GUI
             //updates list of incidents
             UpdateLBOX_Incidents();
 
-            Task.WaitAll(task1);
+           // Task.WaitAll(task1);
 
             //update graphic
 
@@ -80,25 +77,11 @@ namespace GUI
 
             txt_speedMs.Text = time.ToString();
         }
-        //private void AnimalIteration()
-        //{
-        //    //moves animals
-        //    Controller.Instance().MoveAnimals();
-
-        //    //check for animals in same area and conflicts between animals
-        //    Controller.Instance().AnimalsSameLocation();
-
-        //    //check if area has grass. If not, it has a change for growing (33%)
-        //    Controller.Instance().GrassGrows();
-        //}
-
 
         private void UpdateLBOX_Animals()
         {
              Lbox_animals.DataSource = null;
              Lbox_animals.DataSource = Game_Controller.Instance().GetAnimalList();
-          
-            
         }
 
         private void UpdateLBOX_Incidents()
@@ -138,13 +121,40 @@ namespace GUI
             
         }
 
+        private string GetFilePath_DialogBox()
+        {
+            SaveFileDialog SavePath = new SaveFileDialog();
+            SavePath.Title = "Savannah Game - Gem spillets historik";
+            SavePath.FileName = "History " + DateTime.Now.ToShortDateString();
+            SavePath.OverwritePrompt = true;
+            SavePath.InitialDirectory = "c:\\";
+            SavePath.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (SavePath.ShowDialog() == DialogResult.OK)
+            {
+                return SavePath.FileName;
+            }
+            else
+                throw new Exception();
+
+        }
+
         private void btn_stop_Click(object sender, EventArgs e)
         {
             gameTimer.Stop();
         }
 
-
-
-        
+        private void btn_SaveGame_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gameTimer.Stop();
+                Game_Controller.Instance().SaveGameHistory(GetFilePath_DialogBox());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Historie IKKE gemt");
+            }
+            
+        }
     }
 }

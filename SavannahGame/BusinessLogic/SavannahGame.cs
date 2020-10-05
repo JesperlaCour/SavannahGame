@@ -8,6 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common.SetupFile;
+using Persistence;
+using System.Security.Cryptography;
 
 namespace BusinessLogic
 {
@@ -35,7 +37,6 @@ namespace BusinessLogic
         }
 
 
-
         public void NewLion()
         {
             animalList.Add(AnimalFactory.Instance().CreateAnimal(animalType.lion));
@@ -49,17 +50,11 @@ namespace BusinessLogic
 
         public void MoveAnimals()
         {
-            //for (int i = 0; i < 2000000000; i++)
-            //{
-            //    i++;
-            //}
-            //move animals to new location
             foreach (var animal in animalList)
             {
                 animal.Move();
                 AnimalEatsGrass(animal);
                 animal.CheckWeight();
-
             }
             //check if animals is alive. If not it's removed from list
             for (int i = animalList.Count - 1; i >= 0; i--)
@@ -69,7 +64,6 @@ namespace BusinessLogic
                     IncidentsList.Insert(0, $"{animalList[i].type} ({animalList[i].gender}) at at the position {animalList[i].locationX},{animalList[i].locationY} dies by hunger ({animalList[i].weight})kg");
                     animalList.Remove(animalList[i]);
                 }
-
             }
         }
 
@@ -132,16 +126,10 @@ namespace BusinessLogic
                                 break; //breaks for loop[j] and checks the new [i] again
                             }
                         }
-
-                         
-                        
-                        
                     }
                 }
             }
         }
-
-        
 
         private void AnimalEatsGrass(Animal animal)
         {
@@ -154,7 +142,6 @@ namespace BusinessLogic
             {
                 Random r = new Random();
                 animal.ChangeWeight(r.Next(-1, 1));
-
             }
         }
         public void AnimalsMate(animalType type)
@@ -175,7 +162,6 @@ namespace BusinessLogic
 
                 IncidentsList.Insert(0,$"{temp} new rabbits was born");
             }
-            
         }
 
         public void GrassGrows()
@@ -188,7 +174,6 @@ namespace BusinessLogic
                 {
                     if (!areaArray[i,j].ContainsGrass())
                     {
-                        
                         if (r.Next(0, 100/ Settings.Instance().grassGrowSpeed) == 0)
                         {
                             areaArray[i, j].GrassGrows();
@@ -197,6 +182,12 @@ namespace BusinessLogic
                     }
                 }
             }
+        }
+
+        public void SaveGameHistory(string filePath)
+        {
+            IDatabase db = new TextFile();
+            db.SaveLogFile(IncidentsList, filePath);
         }
 
     }
