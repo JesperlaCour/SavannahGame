@@ -11,7 +11,7 @@ namespace Common.SetupFile
         private static Settings _instance;
 
         //settings for simulation
-        public int speed { get; private set; } = 4; //1000ms/speed. Higher int = faster
+        public int GameSpeed { get; private set; } = 4; //1000ms/speed. Higher int = faster
 
         //settings for graphic
         public int areaSize { get; private set; } = 400;

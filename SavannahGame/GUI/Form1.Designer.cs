@@ -42,6 +42,8 @@ namespace GUI
             this.btn_newRabbit = new System.Windows.Forms.Button();
             this.txt_speedMs = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_SaveGame = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_savannah)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@ namespace GUI
             this.btn_newLion.Location = new System.Drawing.Point(36, 25);
             this.btn_newLion.Margin = new System.Windows.Forms.Padding(2);
             this.btn_newLion.Name = "btn_newLion";
-            this.btn_newLion.Size = new System.Drawing.Size(75, 37);
+            this.btn_newLion.Size = new System.Drawing.Size(75, 38);
             this.btn_newLion.TabIndex = 0;
             this.btn_newLion.Text = "New Lion";
             this.btn_newLion.UseVisualStyleBackColor = true;
@@ -58,10 +60,10 @@ namespace GUI
             // 
             // btn_resetGame
             // 
-            this.btn_resetGame.Location = new System.Drawing.Point(36, 225);
+            this.btn_resetGame.Location = new System.Drawing.Point(36, 213);
             this.btn_resetGame.Margin = new System.Windows.Forms.Padding(2);
             this.btn_resetGame.Name = "btn_resetGame";
-            this.btn_resetGame.Size = new System.Drawing.Size(75, 37);
+            this.btn_resetGame.Size = new System.Drawing.Size(75, 38);
             this.btn_resetGame.TabIndex = 1;
             this.btn_resetGame.Text = "Reset";
             this.btn_resetGame.UseVisualStyleBackColor = true;
@@ -73,15 +75,15 @@ namespace GUI
             this.Lbox_animals.Location = new System.Drawing.Point(139, 25);
             this.Lbox_animals.Margin = new System.Windows.Forms.Padding(2);
             this.Lbox_animals.Name = "Lbox_animals";
-            this.Lbox_animals.Size = new System.Drawing.Size(297, 238);
+            this.Lbox_animals.Size = new System.Drawing.Size(297, 277);
             this.Lbox_animals.TabIndex = 2;
             // 
             // bnt_StartGame
             // 
-            this.bnt_StartGame.Location = new System.Drawing.Point(36, 125);
+            this.bnt_StartGame.Location = new System.Drawing.Point(36, 119);
             this.bnt_StartGame.Margin = new System.Windows.Forms.Padding(2);
             this.bnt_StartGame.Name = "bnt_StartGame";
-            this.bnt_StartGame.Size = new System.Drawing.Size(75, 37);
+            this.bnt_StartGame.Size = new System.Drawing.Size(75, 38);
             this.bnt_StartGame.TabIndex = 3;
             this.bnt_StartGame.Text = "Start";
             this.bnt_StartGame.UseVisualStyleBackColor = true;
@@ -100,16 +102,16 @@ namespace GUI
             // listBox_Incidents
             // 
             this.listBox_Incidents.FormattingEnabled = true;
-            this.listBox_Incidents.Location = new System.Drawing.Point(36, 314);
+            this.listBox_Incidents.Location = new System.Drawing.Point(36, 353);
             this.listBox_Incidents.Name = "listBox_Incidents";
-            this.listBox_Incidents.Size = new System.Drawing.Size(400, 407);
+            this.listBox_Incidents.Size = new System.Drawing.Size(400, 368);
             this.listBox_Incidents.TabIndex = 6;
             // 
             // btn_stop
             // 
-            this.btn_stop.Location = new System.Drawing.Point(36, 175);
+            this.btn_stop.Location = new System.Drawing.Point(36, 166);
             this.btn_stop.Name = "btn_stop";
-            this.btn_stop.Size = new System.Drawing.Size(75, 37);
+            this.btn_stop.Size = new System.Drawing.Size(75, 38);
             this.btn_stop.TabIndex = 7;
             this.btn_stop.Text = "Pause";
             this.btn_stop.UseVisualStyleBackColor = true;
@@ -117,9 +119,9 @@ namespace GUI
             // 
             // btn_newRabbit
             // 
-            this.btn_newRabbit.Location = new System.Drawing.Point(36, 75);
+            this.btn_newRabbit.Location = new System.Drawing.Point(36, 72);
             this.btn_newRabbit.Name = "btn_newRabbit";
-            this.btn_newRabbit.Size = new System.Drawing.Size(75, 37);
+            this.btn_newRabbit.Size = new System.Drawing.Size(75, 38);
             this.btn_newRabbit.TabIndex = 8;
             this.btn_newRabbit.Text = "New Rabbit";
             this.btn_newRabbit.UseVisualStyleBackColor = true;
@@ -141,11 +143,32 @@ namespace GUI
             this.label1.TabIndex = 10;
             this.label1.Text = "Iteration speed in ms";
             // 
+            // btn_SaveGame
+            // 
+            this.btn_SaveGame.Location = new System.Drawing.Point(36, 260);
+            this.btn_SaveGame.Name = "btn_SaveGame";
+            this.btn_SaveGame.Size = new System.Drawing.Size(75, 38);
+            this.btn_SaveGame.TabIndex = 11;
+            this.btn_SaveGame.Text = "Gem historik";
+            this.btn_SaveGame.UseVisualStyleBackColor = true;
+            this.btn_SaveGame.Click += new System.EventHandler(this.btn_SaveGame_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(36, 334);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Historik";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1205, 753);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btn_SaveGame);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_speedMs);
             this.Controls.Add(this.btn_newRabbit);
@@ -178,6 +201,8 @@ namespace GUI
         private System.Windows.Forms.Button btn_newRabbit;
         private System.Windows.Forms.TextBox txt_speedMs;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_SaveGame;
+        private System.Windows.Forms.Label label2;
     }
 }
 
