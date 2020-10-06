@@ -29,13 +29,13 @@ namespace GUI
 
         private void btn_newLion_Click(object sender, EventArgs e)
         {
-            Game_Controller.Instance().NewLion();
+            Game_Controller.Instance().NewAnimal(animalType.lion);
             UpdateLBOX_Animals();
         }
 
         private void btn_newRabbit_Click(object sender, EventArgs e)
         {
-            Game_Controller.Instance().NewRabbit();
+            Game_Controller.Instance().NewAnimal(animalType.rabbit);
             UpdateLBOX_Animals();
         }
 

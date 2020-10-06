@@ -36,16 +36,9 @@ namespace BusinessLogic
             IncidentsList.Add("it was a sunny day on the savannah");
         }
 
-
-        public void NewLion()
+        public void NewAnimal(animalType animalType)
         {
-            animalList.Add(AnimalFactory.Instance().CreateAnimal(animalType.lion));
-        }
-
-        public void NewRabbit()
-        {
-
-            animalList.Add(AnimalFactory.Instance().CreateAnimal(animalType.rabbit));
+            animalList.Add(AnimalFactory.Instance().CreateAnimal(animalType));
         }
 
         public void MoveAnimals()
@@ -148,7 +141,7 @@ namespace BusinessLogic
         {
             if (type == animalType.lion)
             {
-                NewLion();
+                NewAnimal(animalType.lion);
                 IncidentsList.Insert(0, "A new Lion was born");
             }
             else if (type == animalType.rabbit)
@@ -157,7 +150,7 @@ namespace BusinessLogic
                 int temp = r.Next(1, 3);
                 for (int k = 0; k < temp; k++)
                 {
-                    NewRabbit();
+                    NewAnimal(animalType.rabbit);
                 }
 
                 IncidentsList.Insert(0,$"{temp} new rabbits was born");

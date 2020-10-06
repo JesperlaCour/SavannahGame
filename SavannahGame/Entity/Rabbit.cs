@@ -19,21 +19,11 @@ namespace Common
                 Die();
         }
 
-        //public override void Die()
-        //{
-        //    alive = false;
-        //}
-
         public override void ChangeWeight(int change)
         {
             weight = weight + change;
             if (weight > Settings.Instance().rabbitMaxWeight)
                 weight = Settings.Instance().rabbitMaxWeight ;
         }
-
-        //public override void Eat(int change)
-        //{
-        //    ChangeWeight(6);
-        //}
     }
 }
