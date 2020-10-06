@@ -11,7 +11,7 @@ namespace Common.SetupFile
         private static Settings _instance;
 
         //settings for simulation
-        public int GameSpeed { get; private set; } = 4; //1000ms/speed. Higher int = faster
+        public int gameSpeed { get; private set; } = 4; //1000ms/speed. Higher int = faster
 
         //settings for graphic
         public int areaSize { get; private set; } = 400;
@@ -46,6 +46,16 @@ namespace Common.SetupFile
                 _instance = new Settings();
             }
             return _instance;
+        }
+
+        public void SetGameSpeed(int gameSpeed)
+        {
+            this.gameSpeed = gameSpeed;
+        }
+
+        public void SetGrassGrow(int grassGrow)
+        {
+            this.grassGrowSpeed = grassGrow;
         }
 
 
