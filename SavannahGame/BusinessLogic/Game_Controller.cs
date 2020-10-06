@@ -30,13 +30,9 @@ namespace BusinessLogic
             savannah = new SavannahGame();
         }
 
-        public void NewLion()
+        public void NewAnimal(animalType animalType)
         {
-            savannah.NewLion();
-        }
-        public void NewRabbit()
-        {
-            savannah.NewRabbit();
+            savannah.NewAnimal(animalType);
         }
 
         public void AnimalIteration()

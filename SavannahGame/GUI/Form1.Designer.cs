@@ -1,4 +1,6 @@
-﻿    
+﻿
+
+using Common.SetupFile;
 
 namespace GUI
 {
@@ -44,7 +46,13 @@ namespace GUI
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SaveGame = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.track_GrassGrow = new System.Windows.Forms.TrackBar();
+            this.lbl_GameSpeed = new System.Windows.Forms.Label();
+            this.lbl_GrassGrow = new System.Windows.Forms.Label();
+            this.track_GameSpeed = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_savannah)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.track_GrassGrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.track_GameSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_newLion
@@ -162,11 +170,57 @@ namespace GUI
             this.label2.TabIndex = 12;
             this.label2.Text = "Historik";
             // 
+            // track_GrassGrow
+            // 
+            this.track_GrassGrow.LargeChange = 1;
+            this.track_GrassGrow.Location = new System.Drawing.Point(471, 629);
+            this.track_GrassGrow.Minimum = 1;
+            this.track_GrassGrow.Name = "track_GrassGrow";
+            this.track_GrassGrow.Size = new System.Drawing.Size(163, 45);
+            this.track_GrassGrow.TabIndex = 14;
+            this.track_GrassGrow.Value = 1;
+            this.track_GrassGrow.Scroll += new System.EventHandler(this.track_GrassGrow_Scroll);
+            // 
+            // lbl_GameSpeed
+            // 
+            this.lbl_GameSpeed.AutoSize = true;
+            this.lbl_GameSpeed.Location = new System.Drawing.Point(471, 518);
+            this.lbl_GameSpeed.Name = "lbl_GameSpeed";
+            this.lbl_GameSpeed.Size = new System.Drawing.Size(69, 13);
+            this.lbl_GameSpeed.TabIndex = 15;
+            this.lbl_GameSpeed.Text = "Game Speed";
+            // 
+            // lbl_GrassGrow
+            // 
+            this.lbl_GrassGrow.AutoSize = true;
+            this.lbl_GrassGrow.Location = new System.Drawing.Point(474, 610);
+            this.lbl_GrassGrow.Name = "lbl_GrassGrow";
+            this.lbl_GrassGrow.Size = new System.Drawing.Size(96, 13);
+            this.lbl_GrassGrow.TabIndex = 16;
+            this.lbl_GrassGrow.Text = "Grass Grow Speed";
+            // 
+            // track_GameSpeed
+            // 
+            this.track_GameSpeed.LargeChange = 2;
+            this.track_GameSpeed.Location = new System.Drawing.Point(471, 537);
+            this.track_GameSpeed.Maximum = 20;
+            this.track_GameSpeed.Minimum = 1;
+            this.track_GameSpeed.Name = "track_GameSpeed";
+            this.track_GameSpeed.Size = new System.Drawing.Size(163, 45);
+            this.track_GameSpeed.TabIndex = 13;
+            this.track_GameSpeed.TickFrequency = 2;
+            this.track_GameSpeed.Value = Settings.Instance().gameSpeed;
+            this.track_GameSpeed.Scroll += new System.EventHandler(this.track_GameSpeed_Scroll);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1205, 753);
+            this.Controls.Add(this.lbl_GrassGrow);
+            this.Controls.Add(this.lbl_GameSpeed);
+            this.Controls.Add(this.track_GrassGrow);
+            this.Controls.Add(this.track_GameSpeed);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_SaveGame);
             this.Controls.Add(this.label1);
@@ -183,6 +237,8 @@ namespace GUI
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.PicBox_savannah)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.track_GrassGrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.track_GameSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +259,10 @@ namespace GUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_SaveGame;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar track_GameSpeed;
+        private System.Windows.Forms.TrackBar track_GrassGrow;
+        private System.Windows.Forms.Label lbl_GameSpeed;
+        private System.Windows.Forms.Label lbl_GrassGrow;
     }
 }
 

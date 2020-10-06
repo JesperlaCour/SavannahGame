@@ -47,10 +47,6 @@ namespace Common
                 Die();
         }
 
-        //public override void Die()
-        //{
-        //    alive = false;
-        //}
 
         public override void ChangeWeight(int change)
         {
@@ -58,14 +54,5 @@ namespace Common
             if (weight > Settings.Instance().LionMaxWeight)
                 weight = Settings.Instance().LionMaxWeight;
         }
-
-
-        //public override void Eat()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        
-
     }
 }

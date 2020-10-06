@@ -29,13 +29,13 @@ namespace GUI
 
         private void btn_newLion_Click(object sender, EventArgs e)
         {
-            Game_Controller.Instance().NewLion();
+            Game_Controller.Instance().NewAnimal(animalType.lion);
             UpdateLBOX_Animals();
         }
 
         private void btn_newRabbit_Click(object sender, EventArgs e)
         {
-            Game_Controller.Instance().NewRabbit();
+            Game_Controller.Instance().NewAnimal(animalType.rabbit);
             UpdateLBOX_Animals();
         }
 
@@ -47,7 +47,7 @@ namespace GUI
         private void bnt_StartGame_Click(object sender, EventArgs e)
         {
 
-            gameTimer.Interval = 1000 / Settings.Instance().GameSpeed;
+            gameTimer.Interval = 1000 / Settings.Instance().gameSpeed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
         }
@@ -155,6 +155,17 @@ namespace GUI
                 MessageBox.Show("Historie IKKE gemt");
             }
             
+        }
+
+        private void track_GameSpeed_Scroll(object sender, EventArgs e)
+        {
+            Settings.Instance().SetGameSpeed(track_GameSpeed.Value);
+            gameTimer.Interval = 1000 / Settings.Instance().gameSpeed;
+        }
+
+        private void track_GrassGrow_Scroll(object sender, EventArgs e)
+        {
+            Settings.Instance().SetGrassGrow(track_GrassGrow.Value);
         }
     }
 }
