@@ -53,7 +53,7 @@ namespace Common.SetupFile
             this.gameSpeed = gameSpeed;
         }
 
-        public void SetGrassGrow(int grassGrow)
+        public void SetGrassGrowSpeed(int grassGrow)
         {
             this.grassGrowSpeed = grassGrow;
         }
