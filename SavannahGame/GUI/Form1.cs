@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
 using Common;
-using Common.SetupFile;
+//using Common.SetupFile;
 using System.Diagnostics;
 using System.Threading;
 
@@ -18,8 +18,8 @@ namespace GUI
 {
     public partial class Form1 : Form
     {
-        Stopwatch stopWatch = new Stopwatch();
-        long time;
+        private Stopwatch stopWatch = new Stopwatch();
+        private long time;
        
         public Form1()
         {
@@ -47,7 +47,7 @@ namespace GUI
         private void bnt_StartGame_Click(object sender, EventArgs e)
         {
 
-            gameTimer.Interval = 1000 / Settings.Instance().gameSpeed;
+            gameTimer.Interval = 1000 / Game_Controller.Instance().GetGameSpeed();
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
         }
@@ -159,13 +159,13 @@ namespace GUI
 
         private void track_GameSpeed_Scroll(object sender, EventArgs e)
         {
-            Settings.Instance().SetGameSpeed(track_GameSpeed.Value);
-            gameTimer.Interval = 1000 / Settings.Instance().gameSpeed;
+            Game_Controller.Instance().SetGameSpeed(track_GameSpeed.Value);
+            gameTimer.Interval = 1000 / Game_Controller.Instance().GetGameSpeed();
         }
 
         private void track_GrassGrow_Scroll(object sender, EventArgs e)
         {
-            Settings.Instance().SetGrassGrow(track_GrassGrow.Value);
+            Game_Controller.Instance().SetGrassGrowSpeed(track_GrassGrow.Value);
         }
     }
 }

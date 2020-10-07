@@ -7,16 +7,7 @@ using Common.SetupFile;
 
 namespace Common
 {
-    public enum gender
-    {
-        female,
-        male
-    }
-    public enum animalType
-    {
-        lion,
-        rabbit
-    }
+ 
     public abstract class Animal : IAnimal
     {
         public animalType type { get; private set; }

@@ -179,7 +179,7 @@ namespace BusinessLogic
 
         public void SaveGameHistory(string filePath)
         {
-            IDatabase db = new TextFile();
+            IDatabase db = new DatabaseProxy();
             db.SaveLogFile(IncidentsList, filePath);
         }
 

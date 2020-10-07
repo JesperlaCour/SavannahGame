@@ -10,22 +10,16 @@ namespace BusinessLogic
 {
     public class Area
     {
-        //private int num;
         private bool grass;
-        //public Animal animal { get; set; }
-
-        //Random r = new Random();
 
         public Area(int r)
         {
             
-
             if (r == 1)
             {
                 grass = true;
             }
             else grass = false;
-            //num = count;
         }
 
         public bool ContainsGrass()
@@ -43,13 +37,13 @@ namespace BusinessLogic
         }
 
 
-        public override string ToString()
-        {
-            if (grass == true)
-            {
-                return " Der er græs her";
-            }
-            return "Der er INGEN græs her";
-        }
+        //public override string ToString()
+        //{
+        //    if (grass == true)
+        //    {
+        //        return " Der er græs her";
+        //    }
+        //    return "Der er INGEN græs her";
+        //}
     }
 }

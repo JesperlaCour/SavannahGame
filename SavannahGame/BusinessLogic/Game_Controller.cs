@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
+using Common.SetupFile;
 
 namespace BusinessLogic
 {
@@ -76,6 +77,21 @@ namespace BusinessLogic
         {
             savannah.SaveGameHistory(filePath);
         }
+
+        public void SetGameSpeed(int gameSpeed)
+        {
+            Settings.Instance().SetGameSpeed(gameSpeed);
+        }
+        public int GetGameSpeed()
+        {
+            return Settings.Instance().gameSpeed;
+        }
+
+        public void SetGrassGrowSpeed(int grassGrowSpeed)
+        {
+            Settings.Instance().SetGrassGrowSpeed(grassGrowSpeed);
+        }
+        
 
 
 
