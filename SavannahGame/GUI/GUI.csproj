@@ -84,7 +84,7 @@
       <Project>{c48e5b8f-982c-47a5-a7f6-0a5fba80f0b2}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entity\Common.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{a6fb5431-e08a-4ed3-bdf9-2af0736fbfb6}</Project>
       <Name>Common</Name>
     </ProjectReference>

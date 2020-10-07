@@ -43,21 +43,6 @@ namespace BusinessLogic
             savannah.GrassGrows();
         }
 
-        public void MoveAnimals()
-        {
-            savannah.MoveAnimals();
-        }
-
-        public void AnimalsSameLocation()
-        {
-            savannah.AnimalsCheck_SameLocation();
-        }
-
-        public void GrassGrows()
-        {
-            savannah.GrassGrows();
-        }
-
         public List<string> GetIncidentList()
         {
             return savannah.IncidentsList;
